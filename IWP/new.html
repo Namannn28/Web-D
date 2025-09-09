@@ -1,0 +1,28 @@
+<form id="myform" action="/submit" method="post">
+    <!-- Text input for username -->
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <br><br>
+
+    <!-- Password input -->
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"  required>
+    <br><br>
+
+    <select>
+    </select>
+
+    <!-- Radio buttons for gender -->
+    <label>Gender:</label>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label>
+    <br><br>
+    <!-- Submit button -->
+    <input type="submit" value="Submit">
+    <label for="message">Your message:</label>
+  <textarea id="message" name="message" rows="5" cols="40"></textarea>
+
+    <button type="button" value="Reset" onclick="document.getElementById('myform').reset()">Reset</button>
+</form>

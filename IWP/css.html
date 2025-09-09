@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>CSS Box Model</title>
+
+        <style>
+
+div {
+    width: 500px;
+    height: 50px;
+    border: 10px solid black;
+    padding: 15px;
+    background-color: greenyellow;
+    /* clips the background color to content only */
+    background-clip: content-box;
+    position: relative;
+    top: 480px;
+    left: 700px;
+}
+        </style>
+    </head>
+
+    <body>
+        <div>
+            The CSS box model is a way of describing the layout of an HTML
+            element.
+        </div>
+    </body>
+
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InlineStyle</title>
+</head>
+<body>
+    <p>This text does not have any style applied to it.</p>
+   
+    The style attribute allows you to declare
+    inline styles. Separate multile style properties
+    with a semicolon
+    
+    <p style="font-size:20pt">This text has the
+    <em>Font-size</em>style applied to it, making it 20pt.  </p>
+    <p style="font-size:20pt; color:#6666ff">
+    This text has the <em>font-size</em> and <em>color</em>
+    styles applied to it, making it 20pt. and light blue.
+    </p>
+    
+</body>
+</html> -->

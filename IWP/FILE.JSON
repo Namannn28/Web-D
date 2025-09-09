@@ -1,0 +1,52 @@
+{
+  "accountNumber": "1234567890",
+  "customerName": "Naman Gupta",
+  "balance": 5000,
+  "accountType": "Savings"
+}
+
+
+{
+  "Patiend Id ": "1234567890",
+  "Name": "Naman Gupta",
+  "age": 18,
+  "gender": "Male",
+  "bloodgroup": "B+",
+  "ContactNo": "9876543210"
+}
+
+
+[
+  {
+    "appointmentId": "APT001",
+    "patientId": "101",
+    "doctorName": "Dr. X",
+    "date": "2025-09-30",
+    "time": "10:00 AM",
+    "status": "Scheduled"
+  },
+  {
+    "appointmentId": "APT002",
+    "patientId": "101",
+    "doctorName": "Dr. Y",
+    "date": "2025-09-30",
+    "time": "02:30 PM",
+    "status": "Scheduled"
+  }
+]
+
+
+
+{
+  "doctorId": "101",
+  "name": "Naman",
+  "specialization": "Dentist",
+  "yearsOfExperience": 20,
+  "availableSlots": [
+    "09:00 AM",
+    "09:30 AM",
+    "10:00 AM",
+    "10:30 AM",
+    "11:00 AM"
+  ]
+}

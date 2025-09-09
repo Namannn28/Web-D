@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET DETAILS </title>
+    <script src="code.jquery.com_jquery-3.7.0.min.js"></script>
+<script>
+   $(document).ready(function() {
+      $("#text").click(function(){
+         alert($("p").text());
+      });
+      $("#html").click(function(){
+         alert($("p").html());
+      });
+   });
+</script>
+</head>
+<body>
+    <p>The quick <b>brown fox</b> jumps over the <b>lazy dog</b></p>
+
+    <button id="text">Get Text</button>
+    <button id="html">Get HTML</button>
+ 
+</body>
+</html>

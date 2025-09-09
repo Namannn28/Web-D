@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript</title>
+  <script>
+    
+    function doubleValue(radius) {
+      radius = radius * 2; 
+    }
+
+    function calculateCircle(circle) {
+      circle.area = Math.PI * circle.radius * circle.radius;
+      circle.circumference = 2 * Math.PI * circle.radius;
+    }
+
+    function showResults() {
+      let r = parseFloat(document.getElementById('radius').value);
+      doubleValue(r);
+      document.getElementById('valueResult').innerText = 
+        "After doubleValue function, radius is still: " + r + " (pass by value)";
+
+      let circle = { radius: r };
+      calculateCircle(circle);
+      document.getElementById('refResult').innerText = 
+        "Area: " + circle.area.toFixed(2) + 
+        ", Circumference: " + circle.circumference.toFixed(2) + " (pass by reference)";
+    }
+  </script>
+</head>
+<body>
+  <h2>Pass by Value and Pass by Reference in JavaScript</h2>
+  <p>
+    Enter radius: <input type="number" id="radius" value="5">
+    <button onclick="showResults()">Calculate</button>
+  </p>
+  <p id="valueResult"></p>
+  <p id="refResult"></p>
+</body>

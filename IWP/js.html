@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    <!--Object by Object Literal-->
+    <script>  
+        emp={id:102,name:"Shyam Kumar",salary:40000}  
+        document.write(emp.id+" "+emp.name+" "+emp.salary);  
+        </script><br>
+        <!--Object by creating an instance of object directly -->
+        <script>  
+            var emp=new Object();  
+            emp.id=101;  
+            emp.name="Ravi Malik";  
+            emp.salary=50000;  
+            document.write(emp.id+" "+emp.name+" "+emp.salary);  
+            </script> <br> 
+<!--Object by By using an Object constructor -->
+   <script>  
+    function emp(id,name,salary){  
+    this.id=id;  
+    this.name=name;  
+    this.salary=salary;  
+    }  
+    e=new emp(103,"Vimal Jaiswal",30000);  
+      
+    document.write(e.id+" "+e.name+" "+e.salary);  
+    </script> 
+</body>
+</html>

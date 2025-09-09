@@ -1,0 +1,10 @@
+div {
+    width: 400px;
+    height: 80px;
+    border: 10px solid black;
+    padding: 15px;
+    background-color: greenyellow;
+    /* clips the background color to content only */
+    background-clip: content-box;
+    
+}
