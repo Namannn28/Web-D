@@ -1,0 +1,31 @@
+Video 1 : This video serves as an introductory lecture to **Full Stack Web Development** using the **MERN stack** (MongoDB, Express, React, Node.js), hosted by *Love Babbar*. It establishes the foundational concepts required for anyone starting their journey into web development.
+
+### **Core Concepts (Layman Terms)**
+
+- **What is the Web? (04:20 - 07:05):** Think of the internet as a massive physical infrastructure (the "restaurant"), and the Web as the services or content served on top of it (the "dish"). It is a system of interconnected documents and resources accessible via the internet.
+- **Web Development (07:05 - 16:25):** The process of building websites (static, like a blog or informational page) and web applications (dynamic, like *LinkedIn* or *Facebook* where users can interact, post, and change data).
+- **Full Stack Development (23:50 - 26:04):** A developer who can manage all three layers of an application:
+    1. **Frontend (UI):** The part the user sees and interacts with (buttons, colors, layouts).
+    2. **Backend:** The "brain" of the application that handles logic (e.g., checking if your login password is correct).
+    3. **Database:** The storage layer where data (like your profile information) is saved.
+
+### **The MERN Stack**
+
+This course uses a popular technology combination:
+
+- **M**ongoDB (Database)
+- **E**xpress (Backend Framework)
+- **R**eact (Frontend Library)
+- **N**ode.js (Backend Runtime)
+
+### **How to get the best out of this course (29:15 - 38:22)**
+
+- **Active Learning:** Don't watch it like a movie. Use a pen and notebook. Create your own notes so you never have to re-watch the video.
+- **Apply the Knowledge:** Code along with the instructor. Add your own unique touch or feature to every project to challenge yourself.
+- **Embrace Research:** Googling problems and using platforms like *Stack Overflow* is a professional skill, not a weakness.
+- **Build Your Presence:** Share your progress on platforms like *LinkedIn*. It helps with networking and visibility for future job opportunities.
+
+### **Course Expectations**
+
+- The instructor emphasizes that early lessons will focus on building a strong conceptual base (networks, browsers, etc.), which may feel theoretical but is essential for professional growth.
+- *Love Babbar* encourages students to register on the *CodeHelp* website for upcoming challenges and assignments.
