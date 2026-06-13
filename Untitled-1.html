@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Translate Example</title>
+  <style>
+    body { text-align: center; font-family: Arial; }
+    .box {
+      width: 150px; height: 150px;
+      margin: 50px auto;
+      background: lightblue;
+      border: 2px solid navy;
+      transition: transform 0.5s;
+    }
+    .box:hover {
+      transform: translate(50px, 30px); 
+    }
+  </style>
+</head>
+<body>
+  <h2>Translate Example</h2>
+  <div class="box"></div>
+  <p>Hover the box to see it shift <b>50px right</b> and <b>30px down</b>.</p>
+</body>
+</html> 

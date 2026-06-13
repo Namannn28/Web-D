@@ -1,0 +1,46 @@
+<?xml version="1.0"?> 
+ 
+<personnel> 
+  <department id="sales"> 
+    <employee> 
+      <name>Sarah Bellum</name> 
+      <title>Vice President</title> 
+      <staff> 
+        <employee> 
+          <name>Luke Bizzy</name> 
+          <title>Manager</title> 
+          <staff> 
+            <employee> 
+              <name>Eddie Puss</name> 
+              <title>Sales Clerk</title> 
+            </employee> 
+            <employee> 
+              <name>Mary Anette</name> 
+              <title>Sales Clerk</title> 
+            </employee> 
+          </staff> 
+        </employee> 
+        <employee> 
+          <name>Bubba Gumb</name> 
+          <title>Accounts Officer</title> 
+        </employee> 
+      </staff> 
+    </employee> 
+  </department> 
+  <department id="marketing"> 
+    <employee> 
+      <name>Tim Burr</name> 
+      <title>Vice President</title> 
+      <staff> 
+        <employee> 
+          <name>Laurie Keet</name> 
+          <title>Promotions Officer</title> 
+        </employee> 
+        <employee> 
+          <name>Abel Boddy</name> 
+          <title>Advertising Officer</title> 
+        </employee> 
+      </staff> 
+    </employee> 
+  </department> 
+</personnel> 
