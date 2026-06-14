@@ -1,0 +1,32 @@
+This video covers fundamental web development concepts to help beginners navigate the industry. Here is a detailed breakdown of the topics discussed:
+
+### 1. Network (01:15 - 05:40)
+A **network** is a system of interconnected devices (like computers, printers, and phones) that communicate and share resources. These range in scale:
+* **LAN (Local Area Network):** Covers small areas like a single room or building.
+* **MAN (Metropolitan Area Network):** Connects across cities or states.
+* **WAN (Wide Area Network):** Connects across countries or globally.
+
+### 2. Internet (05:40 - 07:18)
+The **Internet** is described as a "network of networks." It is a massive global system that connects billions of devices, acting as the foundation for modern connectivity.
+
+### 3. World Wide Web (WWW) (07:18 - 08:33)
+Often referred to as the **Web**, it is a subset of the Internet. It is the system where interlinked documents, media, and resources reside, which we access via the Internet.
+
+### 4. IP Address (08:33 - 13:00)
+Every device on a network requires a unique identifier to communicate, known as an **IP Address**. It functions like a home address, allowing data to be sent to the correct destination.
+
+### 5. Browser (13:00 - 14:25)
+A **browser** (like *Chrome*, *Safari*, or *Firefox*) is a software tool that acts as the user's interface to request and display content from the web.
+
+### 6. Browser Engine (14:25 - 16:20)
+This is the core "brain" of the browser. It interprets and renders web-related code (HTML/CSS/JS) into the visual pages users interact with.
+
+### 7. Client and Server (16:20 - 22:48)
+* **Client:** The user's machine or browser that initiates a request.
+* **Server:** A remote machine that processes the request, holds the data/logic, and returns the appropriate response.
+
+### 8. Web Workflow Example (22:48 - 28:31)
+When you type a URL like *www.facebook.com*:
+1. **DNS (Domain Name System):** Resolves the human-readable domain name into the corresponding IP address of the server.
+2. **Request:** The client sends a request to that specific IP address.
+3. **Response:** The server processes the request and sends the necessary files back to the browser to be rendered for the user.
