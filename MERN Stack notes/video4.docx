@@ -1,0 +1,24 @@
+This video serves as an introductory guide to web development, specifically focusing on the fundamentals of **HTML** and setting up a coding environment. Here is a summary of what is covered:
+
+### **1. Understanding HTML (2:05 - 9:45)**
+*   **Role of HTML:** HTML acts as the structural foundation of a website, providing the "skeleton" and labeling content (e.g., headings, paragraphs, images) to define what each element is.
+*   **The Big Three:** The instructor distinguishes between the three core technologies: **HTML** (the structure/content), **CSS** (the appearance/styling), and **JavaScript** (the logic/behavior).
+
+### **2. Environment Setup (9:45 - 12:45)**
+*   **Tools:** The video guides viewers through installing **Visual Studio Code (VS Code)**.
+*   **Extensions:** Essential extensions for beginners are introduced, specifically **Prettier** (for code formatting) and **Live Server** (to view changes in real-time).
+
+### **3. Your First HTML Program (12:45 - 27:00)**
+*   **Hello World:** The instructor demonstrates how to create an `index.html` file and use a shortcut (typing `!` and hitting Enter) to generate standard boilerplate code.
+*   **Boilerplate Breakdown:**
+    *   `<!DOCTYPE html>`: Defines the document type as **HTML5**.
+    *   `<html>`: The root element containing the entire document.
+    *   `<head>`: Contains metadata, the page title, and links to stylesheets.
+    *   `<body>`: Where the visible content is written.
+*   **Running Code:** The instructor shows how to run the project using the **Live Server** extension.
+
+### **4. Best Practices & Organization (27:00 - 32:35)**
+*   **Learning Resources:** The instructor recommends using **MDN Web Docs** for official documentation and **W3Schools** as a useful supplementary reference.
+*   **Comments:** The importance of using HTML comments (`<!-- comment -->`) for code readability and organization is explained, along with the keyboard shortcut (Command/Ctrl + /).
+
+This video is a great starting point for anyone beginning their journey in full-stack web development.
