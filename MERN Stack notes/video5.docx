@@ -1,0 +1,51 @@
+This comprehensive guide covers everything you need to know about **HTML Tags** as discussed in the video. HTML tags are the fundamental building blocks of the web, allowing you to define the structure, meaning, and presentation of content.
+
+### **1. What are HTML Tags? (00:50)**
+Tags are **markup entities**—special keywords enclosed in angle brackets (e.g., `` is the closing tag).
+    *   **Element:** The combination of the opening tag, the closing tag, and the content inside it (e.g., `` is a paragraph element).
+
+### **2. Tag Categorization**
+
+#### **A. Semantic Tags (07:30)**
+These define the *meaning* of the content, which is crucial for SEO and accessibility.
+*   **Headings (`<h1>` to `<h6>`):** Defines content hierarchy. `<h1>` is the most important; `<h6>` is the least. Always use them in order (07:30 - 11:40).
+*   **Paragraphs (`<p>`):** Used for blocks of text.
+*   **Links (`<a>`):** Creates navigation. Uses the `href` attribute to define the destination (12:00 - 14:30).
+*   **Lists:** 
+    *   `<ul>` (Unordered List): Bullet points (15:16).
+    *   `<ol>` (Ordered List): Numbered sequences (16:07).
+    *   `<li>`: Individual items inside a list.
+*   **Tables (`<table>`):** Uses `<tr>` for rows and `<td>` for individual cells (18:08).
+*   **Images (`<img>`):** Self-closing tag. Uses `src` for the file path and `alt` for accessibility text (21:33).
+
+#### **B. Formatting Tags (29:50)**
+Used to change the visual presentation of text. Note: Modern development prefers **CSS** for styling.
+*   **Emphasis/Bold:** `<strong>` (important/semantic) vs `<b>` (simple bold).
+*   **Italic/Emphasized:** `<em>` (semantic emphasis) vs `<i>` (visual italic).
+*   **Decoration:** `<u>` (underline), `<s>` (strikethrough).
+*   **Technical:** `<sub>` (subscript, e.g., H₂O), `<sup>` (superscript, e.g., 2⁵).
+*   **Preformatted:** `<pre>` (displays text exactly as typed, including spaces/line breaks).
+
+#### **C. Structural Tags (37:30)**
+These define the *skeleton* of your webpage layout:
+*   `<header>`: Top banner/logo/nav area.
+*   `<nav>`: Navigation links.
+*   `<main>`: The primary content of the document.
+*   `<section>`: Logical groupings of content.
+*   `<article>`: Independent, self-contained content.
+*   `<aside>`: Sidebar content.
+*   `<footer>`: Bottom section of the page (copyright/contact info).
+
+### **3. Attributes (21:33)**
+Attributes provide extra information to tags. They are added within the opening tag in `name="value"` format.
+*   **Common examples:** 
+    *   `href="..."`: Defines the destination for `<a>` tags.
+    *   `src="..."`: Defines the path for `<img>` tags.
+    *   `alt="..."`: Provides fallback text for `<img>` tags.
+    *   `style="..."`: Directly applies CSS (e.g., `style="background-color: aqua;"`) (27:54).
+
+### **4. Best Practices**
+*   **Use CSS for Styling:** Don't rely on `<b>` or `<u>` tags for design. Use CSS classes for consistent styling.
+*   **Semantic Over Visuals:** Use tags based on what they *mean* (e.g., `<article>` for a post) rather than how they look.
+*   **Use Documentation:** When in doubt, refer to **MDN Web Docs** to learn about browser compatibility and attributes you haven't seen yet.
+*   **Coding Efficiency:** Use **Emmet** abbreviations (e.g., `ul>li*3` to create a list of 3 items) in VS Code to speed up your workflow.
