@@ -1,0 +1,22 @@
+This video, part of a MERN stack web development course, provides a comprehensive guide to understanding and creating **HTML tables**. The instructor explains the fundamental concepts and demonstrates how to structure, modify, and format tables for organized data presentation.
+
+### **Key Concepts Covered:**
+* **What is a Table?** (00:35): A simple arrangement of data in rows and columns. The smallest unit is referred to as a **cell**.
+* **Essential HTML Tags:**
+    * `<table>`: Used to define the table.
+    * `<thead>`, `<tbody>`, `<tfoot>`: Semantic tags to structure the heading, main content, and summary/footer sections respectively.
+    * `<tr>`: Defines a table row.
+    * `<th>`: Used for header cells.
+    * `<td>`: Used for standard table data cells.
+* **Advanced Table Attributes:** (09:17)
+    * `colspan`: Merges cells across columns.
+    * `rowspan`: Merges cells across rows.
+
+### **Practical Examples:**
+* **Example 1** (06:05): Building a basic student information table.
+* **Example 2** (13:55): Demonstrating `rowspan` and `colspan` in a structured layout.
+* **Example 3** (19:50): Implementing a table with `thead`, `tbody`, and `tfoot` sections including a summary row.
+* **Example 4** (27:10): Creating a complex table with multiple `rowspan` and `colspan` configurations.
+
+### **Next Steps:**
+* **Homework** (37:58): The video concludes with a practice exercise that requires students to replicate a specific table structure to reinforce the learned concepts of spanning cells.
