@@ -1,0 +1,116 @@
+1. Basic Form Structure & Linking Labels
+To create a form, you wrap everything in a <form> tag. Notice how the for attribute in the <label> perfectly matches the id attribute in the <input> to link them together.
+
+HTML
+<form action="/submit-data">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="user_name" placeholder="Enter your username">
+</form>
+2. Password Field & Placeholder
+Using type="password" masks the characters. The placeholder gives the user a temporary hint inside the box.
+
+HTML
+<label for="pwd">Password:</label>
+<input type="password" id="pwd" name="user_password" placeholder="Must be at least 8 characters">
+3. Radio Buttons (Homework Solution Included)
+Homework Answer: To ensure only one radio button can be selected at a time, you must give all related radio buttons the exact same name attribute (in this case, name="gender").
+
+HTML
+<p>Select your gender:</p>
+
+<input type="radio" id="male" name="gender" value="male">
+<label for="male">Male</label><br>
+
+<input type="radio" id="female" name="gender" value="female">
+<label for="female">Female</label><br>
+
+<input type="radio" id="other" name="gender" value="other">
+<label for="other">Other</label>
+4. Checkboxes
+Checkboxes are used when the user is allowed to select multiple options. Notice they share the same name if they belong to the same category, but they act independently.
+
+HTML
+<p>Select languages you know:</p>
+
+<input type="checkbox" id="lang_en" name="languages" value="english">
+<label for="lang_en">English</label><br>
+
+<input type="checkbox" id="lang_hi" name="languages" value="hindi">
+<label for="lang_hi">Hindi</label>
+5. Dropdown Menu (Select & Option)
+This creates a dropdown menu.
+Homework Answer: To allow multiple selections, simply add the boolean attribute multiple to the <select> tag.  
+
+HTML
+<label for="snacks">Choose a snack:</label>
+<select id="snacks" name="snack_choice" multiple>
+  <option value="maggi">Maggi</option>
+  <option value="kurkure">Kurkure</option>
+  <option value="chips">Chips</option>
+</select>
+6. Textarea (Multi-line Input)
+Use this for large blocks of text like addresses or feedback. You can control its default size using rows and cols.
+
+HTML
+<label for="feedback">Your Feedback:</label><br>
+<textarea id="feedback" name="user_feedback" rows="5" cols="40" placeholder="Write your thoughts here..."></textarea>
+7. File Upload & Date Picker
+These use specific types to trigger built-in browser features (a file explorer window and a calendar popup).
+
+HTML
+<label for="dob">Date of Birth:</label>
+<input type="date" id="dob" name="birthday"><br><br>
+
+<label for="resume">Upload Resume:</label>
+<input type="file" id="resume" name="user_resume">
+8. Fieldset and Legend
+This creates a visual grouping box around related fields, with a caption sitting on the top border.
+
+HTML
+<fieldset>
+  <legend>Personal Information</legend>
+  
+  <label for="fname">First Name:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  
+  <label for="lname">Last Name:</label>
+  <input type="text" id="lname" name="lname">
+</fieldset>
+9. Different Ways to Create a Submit Button
+Here are three different ways to submit the form data to the server.
+
+HTML
+<input type="submit" value="Submit Form">
+
+<button type="submit">Click Here to Submit</button>
+
+<input type="image" src="submit-arrow.png" alt="Submit" width="50" height="50">
+Putting It All Together (A Complete Mini-Form)
+If you copy and paste this into an HTML file, you will see a fully structured form:
+
+HTML
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>User Registration</h2>
+
+<form action="/submit-registration" method="POST">
+  <fieldset>
+    <legend>Account Details</legend>
+    
+    <label for="email">Email ID:</label>
+    <input type="text" id="email" name="email" placeholder="name@example.com"><br><br>
+    
+    <label for="pass">Password:</label>
+    <input type="password" id="pass" name="pass"><br><br>
+    
+    <label for="bday">Birthday:</label>
+    <input type="date" id="bday" name="bday"><br><br>
+    
+    <input type="submit" value="Register Now">
+  </fieldset>
+</form>
+
+</body>
+</html>
