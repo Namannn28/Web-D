@@ -1,0 +1,82 @@
+Form 1: Event Registration Form
+This first form serves as a warm-up, utilizing basic input types and labels that were covered in previous lectures [03:22].
+
+Key Elements Covered:
+
+Basic Inputs: Text (type="text"), Email (type="email"), and Phone (type="tel").
+
+Dropdown Menus: Created using the <select> tag with nested <option> tags to let users choose their occupation (Student, Professional, Other).
+
+Grouping with Fieldsets: He introduces the <fieldset> tag to draw a visual box around related elements, and the <legend> tag to give that box a title [07:39]. Here, it's used to group "Topics of Interest" checkboxes.
+
+Multi-line Text: Using the <textarea> tag for comments.
+
+Code Example:
+
+HTML
+<form>
+  <!-- Grouping checkboxes -->
+  <fieldset>
+    <legend>Topic of Interest</legend>
+    
+    <input type="checkbox" id="html" name="html">
+    <label for="html">HTML</label><br>
+    
+    <input type="checkbox" id="css" name="css">
+    <label for="css">CSS</label><br>
+  </fieldset>
+</form>
+Form 2: Job Application Form
+The second form introduces a few new input types and constraints to make the form more robust [11:48].
+
+Key Elements Covered:
+
+File Uploads: Using <input type="file"> to generate a "Choose File" button so users can upload their resume [14:28].
+
+Number Counters with Limits: To capture "Experience in Years," the form uses <input type="number">. To prevent invalid data, he adds min="0" and max="50" attributes to restrict the counter's range [15:09].
+
+Mutually Exclusive Radio Buttons: When creating the "Availability" section (Full-time vs. Part-time), you must give both radio buttons the exact same name attribute. This is what tells the browser that they belong to the same group and only one can be selected at a time [19:35].
+
+Code Example:
+
+HTML
+<form>
+  <!-- File Upload -->
+  <label for="resume">Upload Resume:</label>
+  <input type="file" id="resume" name="resume"><br><br>
+
+  <!-- Number Input with Limits -->
+  <label for="experience">Experience (in years):</label>
+  <input type="number" id="experience" name="experience" min="0" max="50">
+</form>
+Form 3: Complex Form
+The final form combines everything into a highly structured layout. This mimics real-world scenarios where forms require multiple distinct sections [23:45].
+
+Key Elements Covered:
+
+Multiple Fieldsets: The form is divided into three distinct, bordered sections: "Personal Information," "Address," and "Other Information."
+
+Date Pickers: Using <input type="date"> to generate a calendar popup, making it easy to capture a Date of Birth [26:40].
+
+Inline Elements: Using the <span> tag to place text (like a "Gender" label) on the exact same line as the radio buttons, rather than pushing them to a new line with a <p> tag.
+
+Code Example:
+
+HTML
+<form>
+  <fieldset>
+    <legend>Personal Information</legend>
+    
+    <!-- Date Picker -->
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob"><br><br>
+    
+    <!-- Inline Gender Radio Buttons -->
+    <span>Gender:</span>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label>
+  </fieldset>
+</form>
