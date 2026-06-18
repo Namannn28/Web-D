@@ -6,6 +6,53 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Student Registration Form</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required> <br/> <br/>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required> <br/> <br/>
+  
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required> <br/> <br/>
+
+        <label for="Resume">Resume:</label>
+        <input type="file" id="Resume" name="Resume" accept=".pdf"> <br/> <br/>
+
+        <label for="experience">Experience (years):</label>
+        <input type="number" id="experience" name="experience" min="0" max="50"> <br/> <br/>
+
+        <fieldset>
+            <legend>skills:</legend>
+            <input type="checkbox" id="html" name="skills" value="HTML">
+            <label for="html">HTML</label><br/>
+            <input type="checkbox" id="css" name="skills" value="CSS">
+            <label for="css">CSS</label><br/>
+            <input type="checkbox" id="javascript" name="skills" value="JavaScript">
+            <label for="javascript">JavaScript</label><br/>
+
+        </fieldset>
+        <br/> <br/>
+        <label for="Higher">Highest Qualification:</label>
+        <select id="Higher" name="Higher">
+            <option value="highschool">High School</option>
+            <option value="bachelor">Bachelor's Degree</option>
+            <option value="master">Master's Degree</option>
+            <option value="phd">PhD</option>
+        </select>
+    <br/> <br/>
+    <fieldset>
+        <legend>Availability:</legend>
+        <input type="radio" id="fulltime" name="availability" value="fulltime">
+        <label for="fulltime">Full-time</label><br/>
+        <input type="radio" id="parttime" name="availability" value="parttime">
+        <label for="parttime">Part-time</label><br/>
+    </fieldset>
+    <br/> <br/>
+    <label for="message">Message:</label> <br/>
+    <textarea name="message" rows="4" cols="50" placeholder="Enter your message here..."></textarea> <br/> <br/>
+    <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
