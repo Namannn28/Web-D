@@ -1,0 +1,83 @@
+1. What are CSS Custom Variables?
+Custom Variables (commonly called CSS Variables) allow you to store specific values—like colors, fonts, or padding spacing—in one central location and reuse them throughout your entire stylesheet. This makes changing a website's theme or color palette later incredibly simple.
+
+Syntax & Scope
+Declaring Variables: To create a variable, you choose a name and prefix it with two dashes (--).
+
+Global Scope (:root): Placing your variables inside the :root selector makes them accessible to every single element across your whole webpage.
+
+Using Variables (var()): To apply a variable, wrap its custom name inside the var() function.
+
+CSS
+/* 1. Declare global theme variables */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --main-padding: 1.5rem;
+  --heading-font: 'Poppins', sans-serif;
+}
+
+/* 2. Reuse them anywhere in your stylesheet */
+.card {
+  background-color: var(--primary-color);
+  padding: var(--main-padding);
+}
+
+h1 {
+  font-family: var(--heading-font);
+  color: var(--secondary-color);
+}
+2. Understanding Responsive Web Design & Media Queries
+A Media Query is a CSS block directive that tells the browser: "Only execute this specific styling layout IF the user's hardware matches these conditions (like screen width, height, or orientation)." This is the core engine behind mobile-friendly development.
+
+Core Structure of a Media Query
+CSS
+@media media-type and (media-feature) {
+  /* This custom CSS compiles ONLY when the rule above is TRUE */
+}
+Media Types: screen (desktop monitors, phones, tablets), print (printers), or all.
+
+Media Features: Conditional constraints like max-width, min-width, or orientation.
+
+3. Practical Positioning: Screen Breakpoints
+Breakpoints are the specific screen width thresholds where your layout alters configuration to accommodate smaller viewports.
+
+A. Mobile-First vs. Desktop-First Approaches
+Desktop-First (max-width): You style the massive desktop monitor layout first, then use max-width to strip away or modify items as the screen shrinks down to mobile size.
+
+Mobile-First (min-width): You style the compact mobile layout first, then scale up as screen dimensions expand.
+
+B. Example Real-World Implementation (Desktop-First)
+In this example, the grid container automatically downscales from 3 columns on a desktop to 1 single column on a small smartphone screen:
+
+CSS
+/* Baseline Desktop Layout */
+.container {
+  display: flex;
+  flex-direction: row; /* Side-by-side elements */
+  background-color: lightgray;
+}
+
+/* --- MEDIA QUERY BREAKPOINTS --- */
+
+/* 1. Tablets (Screens 768px wide or smaller) */
+@media screen and (max-width: 768px) {
+  :root {
+    --main-padding: 1rem; /* Dynamically decrease global variable padding spacing */
+  }
+  .container {
+    background-color: lightblue; /* Visual change for tablet tracking testing */
+  }
+}
+
+/* 2. Mobile Phones (Screens 480px wide or smaller) */
+@media screen and (max-width: 480px) {
+  .container {
+    flex-direction: column; /* Stacks column boxes vertically on small devices */
+    background-color: lightcoral;
+  }
+}
+4. Key Takeaways for Students
+Dynamic Pairing: You can nest variable overrides inside your media queries. When the screen drops past a mobile threshold, updating --primary-color inside @media immediately shifts colors across your entire architecture cleanly.
+
+Never duplicate layout frameworks: Media queries should only contain the tiny, distinct property changes needed to alter alignments at that breakpoint. Do not copy paste your entire baseline element rules into them.
