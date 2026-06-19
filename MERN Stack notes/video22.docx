@@ -1,0 +1,87 @@
+1. The CSS Box Shadow Property (box-shadow)The box-shadow property adds shadow graphic frames directly around element frames (like <div>, buttons, or images).The 6 Parts of a Box ShadowA complete box shadow declaration can accept up to 6 custom value arguments:CSS.card {
+  box-shadow: inset 5px 10px 15px 2px rgba(0, 0, 0, 0.3);
+}
+inset (Optional): Changes the shadow from an outer drop shadow to an internal inner shadow that faces inside the element border frame.Horizontal Offset ($X$-Axis): Moves the shadow horizontally. Positive numbers slide it right; negative numbers push it left. (Required)Vertical Offset ($Y$-Axis): Moves the shadow vertically. Positive numbers push it down; negative numbers slide it up. (Required)Blur Radius (Optional): Controls how crisp or soft the shadow looks. Higher numbers spread the color values, making it blurry and soft. Leaving it blank defaults to 0 (a completely sharp edge).Spread Radius (Optional): Expands or shrinks the overall physical thickness of the shadow profile. Positive numbers grow it outward; negative numbers pull it in.Color (Optional): Defines the color of the shadow using names, Hex, RGB, or RGBA (highly recommended to introduce alpha transparency transparency).2. The CSS Text Shadow Property (text-shadow)The text-shadow property applies a dimensional shadow directly behind typography letters and decorations.Unlike box shadows, text shadows do not accept a spread radius or an inset value. They are strictly managed using 4 arguments:CSSh1 {
+  /* text-shadow: X-offset | Y-offset | blur-radius | color */
+  text-shadow: 3px 3px 5px rgba(255, 0, 0, 0.5);
+}
+Readability Tip: Text shadows are great for maintaining text readability when placing light-colored text right over complex, variable background pictures.3. Advanced Shadow ImplementationsA. Layering Multiple Commas Separated ShadowsYou can add multiple overlapping shadows to a single element by splitting your declarations with a comma (,). This is how developers create realistic, multi-layered depth effects.CSS/* Creating a smooth high-elevation box shadow */
+.premium-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 
+              0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Layering text shadows for a retro glow */
+h2 {
+  text-shadow: 1px 1px yellow, 2px 2px orange, 3px 3px red;
+}
+B. Creating Text Borders (The Silhouette Trick)You can create a crisp border wrapper outline completely around typography characters by chaining 4 sharp, unblurred shadows in all four diagonal tracking directions:CSS.outlined-text {
+  color: white; /* Match text to background color */
+  text-shadow: -1px -1px 0 #000,  
+                1px -1px 0 #000,
+               -1px  1px 0 #000,
+                1px  1px 0 #000;
+}
+Comprehensive Student Code LabHTML<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Effects Lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            font-family: sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        /* Glowing text effect */
+        h1 {
+            font-size: 3.5rem;
+            color: #212529;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 8px rgba(0, 123, 255, 0.4); /* Soft blue blur glow */
+        }
+
+        /* Floating layout card box */
+        .card {
+            width: 300px;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            /* Multi-layered soft drop shadow */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+                        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        /* Shift elevations dynamically on user hover actions */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 
+                        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Naman Gupta</h1>
+        <div class="card">
+            <p>Hover over this card to watch the box-shadow recompile and alter structural elevation depths smoothly.</p>
+        </div>
+    </div>
+</body>
+</html>
