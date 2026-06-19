@@ -1,0 +1,18 @@
+1. The CSS Float Property (float)The float property specifies how an element should drift within its parent container. When you float an element, it is completely pulled out of the normal layout tracking, allowing surrounding content (like raw text) to wrap around it naturally.Available Values:float: left;: Shifts the element to the far-left boundary of its container.float: right;: Shifts the element to the far-right boundary of its container.float: none; (Default): The element sits normally in the document flow.CSS/* Real-world example: Floating an image inside a text column */
+img {
+  float: left;
+  margin-right: 20px;
+}
+2. The CSS Clear Property (clear)When you float an element, subsequent elements automatically try to rise and wrap into the remaining empty space around it. If you want an element to sit completely below a floated box rather than wrapping next to it, you use the clear property.Available Values:clear: left;: Prevents wrapping next to left-floated elements.clear: right;: Prevents wrapping next to right-floated elements.clear: both;: Clears alignment references on both sides, forcing the element down onto a clean line underneath any floats.CSSp.new-paragraph {
+  clear: both; /* Snaps beneath any floated block elements safely */
+}
+3. Managing Container Bounds with Overflow (overflow)Sometimes, content inside an element is physically larger than the explicit layout boundaries defined on its parent box container. The overflow property dictates exactly how the browser handles this extra content.  The Four Core Values:visible (Default): The extra content bleeds outside the container box and displays right over any elements sitting underneath.  hidden: Any content exceeding the parent box's fixed dimensions is cleanly clipped away and becomes completely invisible.  scroll: The browser permanently pins horizontal and vertical scrollbars to the container, allowing users to scroll through the hidden text area.  auto: Highly recommended practice. Scrollbars will dynamically appear only if the text actually expands past the physical limits of the box container.CSS/* Example layout with strict overflow parameters */
+.scroll-card {
+  width: 200px;
+  height: 100px;
+  overflow: auto; /* Scrollbars scale up dynamically only when needed */
+}
+4. The overflow-x and overflow-y ModifiersYou can separate your boundary controls on specific directions using axis modifiers:overflow-x: Manages horizontal leakage (e.g., stopping a code string from breaking off-screen).overflow-y: Manages vertical leakage (e.g., pinning scroll paths to a standard dropdown panel layout).CSS.code-block {
+  overflow-x: auto;   /* Allows horizontal scrolling for wide code snips */
+  overflow-y: hidden; /* Truncates any unexpected vertical height bursts */
+}
