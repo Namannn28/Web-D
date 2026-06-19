@@ -1,0 +1,25 @@
+Core CSS Display Property BreakdownThe display property determines the conceptual layout standard a web browser enforces to wrap and visually source an HTML tag inside the viewport layout [01:37]. Modern browsers interpret layout alignments strictly based on three core structural displays [03:18]:1. Display: Block (display: block)Elements configured as blocks serve as modular baseline units that completely clear spacing rules [04:43]. Examples include <div>, <p>, and <h1> [04:49].CSSdiv {
+  display: block;
+  width: 300px;
+  height: 300px;
+  margin: 25px;
+  padding: 50px;
+}
+Line Clears: Block components will always snap onto a fresh layout line, automatically pushing previous or subsequent components directly down [05:41].Universal Footprint Width: By default, a block automatically swells up to claim the entire space from the extreme left boundary directly to the extreme right edge of the viewport container [06:14].Explicit Dimension Ratios: Completely respects any specific custom width and height parameters you define inside your stylesheet [07:03].Axis Spacing Buffer: Fully scales margin clearance and interior padding pushes symmetrically across all four distinct layout boundaries (Top, Right, Bottom, Left) [07:45].2. Display: Inline (display: inline)Inline attributes operate smoothly within text lines without introducing page structural interruptions [15:05]. Examples include <span> and <a> [15:14].CSSspan {
+  display: inline;
+  /* width, height, and vertical margins are ignored here */
+  margin: 0 10px; /* Only Horizontal margin works */
+  padding: 15px;  /* Visual padding works but won't shift neighbors */
+}
+Continuous Horizontal Flow: Inline tags will dynamically adapt to sit adjacent to each other on the exact same row as long as remaining margin space is available [16:21].Tight Core Wrap: Never fills up extra space automatically. The width dynamically wraps right up against the precise bounds of the textual text or assets placed inside it [17:17].Ignores Dimension Limits: Browsers completely ignore custom height and width specifications applied to standard inline properties [18:18].Strict Margin Clearances: Horizontal margin spacing (Left/Right) applies perfectly [18:46]. However, vertical margins (Top/Bottom) will be completely ignored and fail to shift neighboring layout tracks up or down [18:56].3. Display: Inline-Block (display: inline-block)This display serves as a hybrid layout standard that seamlessly merges the external placement features of inline flows with the internal sizing metrics of blocks [23:15].CSSspan.badge {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  padding: 15px;
+}
+Sibling Alignment Flow: Elements will continue to flow from left to right on the same structural lines as ordinary text blocks [24:49].Dimension Control Rules: Unlike default inline tags, inline-block layout blocks completely recognize and respect explicit height and width metrics [25:48].Universal Buffer Clearances: Symmetrically applies margin pushes and padding calculations across all four layout boundaries (Top, Bottom, Left, and Right) without disrupting surrounding baseline alignment rules [25:51].Core Comparison TableFeature / BehaviorBlock (block)Inline (inline)Inline-Block (inline-block)Starts on a New Line?Yes [05:41]No (flows horizontally) [16:21]No (flows horizontally) [24:49]Default Width100% of parent container [06:14]Only as wide as its content [17:17]Only as wide as its content [25:21]Respects width & height?Yes [07:03]No (completely ignored) [18:18]Yes (fully respected) [25:48]Respects Padding (All Sides)?Yes [07:45]Yes (visual only; won't push tags) [19:25]Yes (fully respected) [25:51]Respects Margins (All Sides)?Yes [07:45]Only Horizontal (Left/Right) [18:46]Yes (fully respected) [25:51]The Master Solution: Global Reset with border-boxBabbar reviews the deep-dive core logic of box-sizing: border-box to show how default container padding expansions can break explicit width scales [12:33]. Without this rule, adding padding or borders expands the physical footprint of an element, causing it to distort layout structures [13:01].To lock element sizing rules perfectly, add this global combination script directly into your layout resets [13:15]:CSS* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Sizing math now includes padding inside bounds */
+}
