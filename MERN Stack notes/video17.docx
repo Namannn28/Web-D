@@ -1,0 +1,23 @@
+1. What is Document Flow?Before exploring positioning, you have to understand Normal Document Flow. By default, block elements stack vertically on top of each other and inline elements flow horizontally from left to right. Changing the position property allows you to break elements completely out of this baseline layout tracking.2. The Five CSS Position ValuesA. Position: Static (position: static;)This is the default setting for every HTML element.Behavior: The element follows the standard document flow perfectly.Offset Rule: Offset properties like top, bottom, left, or right are completely ignored by the browser.B. Position: Relative (position: relative;)An element with position: relative remains inside the standard document flow, but you can shift it visually from its original baseline spot.Behavior: Offset values move the element relative to where it normally would have sat.Crucial Rule: Even when shifted, the element leaves behind a "ghost" space. Surrounding elements do not move or shift to fill the gap it left behind.CSS.box {
+  position: relative;
+  top: 20px;  /* Pushes the element 20px down from its original top boundary */
+  left: 10px; /* Pushes the element 10px right from its original left boundary */
+}
+C. Position: Absolute (position: absolute;)This property yanks the element completely out of the normal document flow.Behavior: It leaves no structural footprint behind, and neighboring elements instantly snap up to fill the void.The Ancestor Rule: An absolute element aligns itself relative to its nearest positioned ancestor (any parent container that has a position other than static). If no positioned parent exists, it defaults to the main browser viewport.💡 The Golden Industry Combination:To place a badge or icon tightly inside a specific card container, professional developers set the parent container to position: relative; (acting as the anchor) and the inner element to position: absolute;.CSS.card-parent {
+  position: relative; /* Acts as the absolute bounding anchor */
+}
+.badge-child {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Positions perfectly at the top-right corner of the card */
+}
+D. Position: Fixed (position: fixed;)Fixed positioning also removes the element completely from the document flow.Behavior: It binds the element directly to the browser viewport window.Scroll Independence: Even when a user scrolls down a massive page, a fixed element stays completely locked at its specific offset coordinates (frequently used for global sticky chat buttons or popup alerts).CSS.popup-alert {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* Stays glued to the bottom-right corner of the screen when scrolling */
+}
+E. Position: Sticky (position: sticky;)Sticky positioning is a dynamic hybrid of relative and fixed configurations.Behavior: It acts like an ordinary relative element following the scroll flow until it hits a pre-defined layout offset checkpoint. Once that coordinate boundary meets the viewport threshold, it suddenly toggles into a fixed position, remaining stuck to the screen as the page scrolls past.Constraint: A sticky element only remains stuck inside the visual boundaries of its parent block. Once the parent moves out of view, the sticky component scrolls away with it (ideal for sticky table columns or persistent navigation headers).CSSnav {
+  position: sticky;
+  top: 0; /* Flows normally, but sticks firmly to the very top edge of the window upon scroll contact */
+}
+3. Element Layering with z-indexWhen you start moving elements around via relative, absolute, or fixed positioning, they will eventually overlap.By default, elements written lower in the HTML source file overlay on top of earlier ones. To manually override this stacking order, use z-index:Elements with higher z-index numbers sit on top of lower ones (e.g., z-index: 10; renders over z-index: 2;).The Catch: z-index only works on elements that have an explicit position property defined (it is completely ignored on default static components).Summary Layout ChecklistPositioning ModeBreaks Normal Flow?Relative To...Moves on Scroll?staticNoNormal FlowYesrelativeNoIts own original layout coordinatesYesabsoluteYesClosest non-static parent containerYesfixedYesBrowser Viewport WindowNo (stays locked)stickyNo (until threshold met)Viewport boundary limitConditionally (glues to threshold)
