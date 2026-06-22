@@ -1,0 +1,114 @@
+🎬 Part 1: The Gatekeeper — perspective
+If you try to rotate an element in 3D space right now, it will just look like it's awkwardly shrinking. Why? Because the browser doesn't have a camera lens or a simulated "viewing distance."
+
+To fix this, you must apply the perspective property to the parent container.
+
+CSS
+.scene {
+  /* This activates the 3D space. Think of it as the camera lens distance. */
+  perspective: 800px; 
+  width: 300px;
+  height: 300px;
+}
+Low Perspective (200px): The camera is extremely close. The 3D distortion is intense, dramatic, and right in your face.
+
+High Perspective (200px or more): The camera is far away. The 3D effect is subtle, realistic, and gentle.
+
+🎬 Part 2: Moving in 3D Space (translate3d & rotate3d)
+Once the parent has perspective, you can manipulate the child element across three axes: X (horizontal), Y (vertical), and Z (depth).
+
+CSS
+.box {
+  /* Shorthand: translate3d(x, y, z) */
+  transform: translate3d(20px, 0px, 100px); 
+}
+translateZ(positive value): Moves the element closer to the viewer (makes it look bigger).
+
+translateZ(negative value): Pushes the element further away into the screen (makes it look smaller).
+
+Crucial Axis Rotation Guide
+Rotation in 3D can be confusing. Picture a physical skewer piercing through your element:
+
+rotateX(45deg): Spins like a rotisserie chicken or a horizontal window blind.
+
+rotateY(45deg): Spins like a revolving door or a book page turning.
+
+rotateZ(45deg): Exactly like your standard 2D rotation (spins like a wheel).
+
+🎬 Part 3: Passing the 3D Context (transform-style)
+By default, even if a parent has perspective, it flattens its children into a 2D plane like a picture frame. If you want children to nest inside each other and maintain their own independent 3D depth, you must use transform-style: preserve-3d;.
+
+CSS
+.card-container {
+  perspective: 1000px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; /* CRITICAL: Allows inner elements to live in 3D */
+  transition: transform 0.6s;
+}
+
+.card:hover {
+  transform: rotateY(180deg);
+}
+🎬 Part 4: Building a 3D Card Flip
+Let's tie it all together to make a classic, flawless 3D double-sided card flip.
+
+The HTML Structure
+HTML
+<div class="scene">
+  <div class="card">
+    <div class="card-face card-front">Front Content</div>
+    <div class="card-face card-back">Back Content</div>
+  </div>
+</div>
+The Master CSS
+CSS
+/* 1. Setup the viewport */
+.scene {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+}
+
+/* 2. Setup the 3D anchor */
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Flip the card on hover */
+.scene:hover .card {
+  transform: rotateY(180deg);
+}
+
+/* 3. Style both faces */
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* CRITICAL: Hides the mirror image when flipped */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 2rem;
+}
+
+.card-front {
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  color: white;
+}
+
+.card-back {
+  background: #333;
+  color: white;
+  transform: rotateY(180deg); /* Pre-flips the back side so it faces away from us initially */
+}
+🧠 The Secret Sauce: backface-visibility
+Without backface-visibility: hidden;, when the card flips 180 degrees, the front side would just show through backwards. Setting it to hidden tells the browser: "If this element is facing away from the camera, make it invisible." This seamlessly reveals the .card-back underneath!
