@@ -111,4 +111,4 @@ CSS
   transform: rotateY(180deg); /* Pre-flips the back side so it faces away from us initially */
 }
 🧠 The Secret Sauce: backface-visibility
-Without backface-visibility: hidden;, when the card flips 180 degrees, the front side would just show through backwards. Setting it to hidden tells the browser: "If this element is facing away from the camera, make it invisible." This seamlessly reveals the .card-back underneath!
+Without backface-visibility: hidden;, when the card flips 180 degrees, the front side would just show through backwards. Setting it to hidden tells the browser: "If this element is facing away from the camera, make it invisible." this seamlessly reveals the .card-back underneath!
