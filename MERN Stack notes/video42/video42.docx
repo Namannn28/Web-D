@@ -1,0 +1,41 @@
+Part 1: Loops in JavaScriptWhy Do We Need Loops?Without loops, executing a repetitive instruction forces you to write duplicate lines of code. This brings significant development issues [00:02:13]:Code Bulkiness: Bloating the source file size [00:02:13].Poor Maintainability: If a variable name changes (e.g., from "Babbar" to "Gabbar"), you must manually alter every single line [00:02:32].Bug-Prone Environment: Changes are hard to cascade consistently [00:02:54].Loops elegantly solve this by automating the repetitive execution of a block of statements using controlled parameters [00:03:06].A. The for Loop [00:07:01]The most fundamental structure for definite loop execution.$$\mathbf{\text{for (Initialization ; Condition ; Updation) \{ ... \}}}$$Initialization: Executed once at the start to declare the loop control variable [00:07:44].Condition: Checked before every iteration. If true, the loop body runs; if false, the loop terminates [00:07:54].Updation: Modifies the loop control variable after each block run, routing straight back to the condition check [00:08:12].Code Example: Counting 1 to 5JavaScriptfor (let i = 1; i <= 5; i++) {
+    console.log(i); // Outputs: 1, 2, 3, 4, 5
+}
+Code Example: Reverse Counting [00:17:30]JavaScriptfor (let i = 5; i > 0; i--) {
+    console.log(i); // Outputs: 5, 4, 3, 2, 1
+}
+B. The while Loop [00:29:45]Executes a target statement block continually while its conditional criteria evaluates to true. Ideal when you don't know the exact number of iterations in advance [00:33:59].Structure: Initialization happens outside, condition sits inside the while() parentheses, and updation runs within the body [00:31:08].JavaScriptlet i = 1; // Initialization
+while (i <= 5) { // Condition
+    console.log(i);
+    i++; // Updation
+}
+C. The do-while Loop [00:40:51]An exit-controlled loop structure. Unlike for and while (which check the condition first), do-while guarantees that the block executes at least once before evaluating the test expression [00:46:22].JavaScriptlet i = 10;
+do {
+    console.log(i); // Prints 10 once, even though condition below is false
+    i++;
+} while (i < 5);
+D. Control Statements: break vs. continue1. break [00:21:01]Instantly breaks out of the active loop scope entirely, passing control to the statements right below the loop structure [00:22:18].JavaScriptfor (let i = 1; i <= 6; i++) {
+    if (i === 4) break; // Exits loop completely when i becomes 4
+    console.log(i); // Outputs: 1, 2, 3
+}
+2. continue [00:25:27]Skips the rest of the current iteration block and moves directly to the next scheduled loop cycle (performing the updation step first) [00:26:16].JavaScriptfor (let i = 1; i <= 4; i++) {
+    if (i === 3) continue; // Skips printing 3
+    console.log(i); // Outputs: 1, 2, 4
+}
+⚠️ Warning on while Loops: When using continue inside a while loop, ensure your index update statement (i++) occurs before the continue keyword, or you will cause an Infinite Loop error [00:39:00].Part 2: Strings in JavaScriptA String is an immutable sequence of characters used to manage text data structures [00:48:36].A. Four Ways to Initialize a String [00:52:26]Double Quotes: let str1 = "Love Babbar"; [00:49:23]Single Quotes: let str2 = 'CodeHelp'; [00:49:28]Template Literals (Backticks): Allows multi-line strings effortlessly and enables String Interpolation [00:51:35].JavaScriptlet age = 24;
+let bio = `Hello
+My age is ${age}`; // Injecting dynamic variable values via ${} [00:56:41]
+String Object Instance: Creates a wrapper object instance around a primitive string using the new keyword [00:52:45].JavaScriptlet strObj = new String("Hello World");
+B. Core String Methods & Properties1. .length [00:57:48]Returns the total character character count inside a target string instance.JavaScriptconsole.log("Hindi".length); // 5
+2. .toUpperCase() & .toLowerCase() [00:58:20]Alters character casings across all characters.JavaScriptconsole.log("abc".toUpperCase()); // "ABC"
+3. .substring(startIndex, endIndex) [00:59:21]Extracts a segment of the string from startIndex up to (but excluding) endIndex [01:02:10].JavaScriptlet text = "Babbar";
+console.log(text.substring(2));    // "bbar" (From index 2 to end) [01:00:34]
+console.log(text.substring(2, 4)); // "bb"   (Extracts index 2 and 3) [01:01:46]
+4. .split(separator) [01:02:54]Splits a string into an array of substrings based on a specified separator character.JavaScriptlet sentence = "Hello-ji-kaise-ho";
+let words = sentence.split("-"); // ["Hello", "ji", "kaise", "ho"]
+5. .join(separator) [01:08:25]Combines elements of a string array back into a unified string layout using a chosen connector.JavaScriptconsole.log(words.join(" ")); // "Hello ji kaise ho" [01:09:11]
+C. Escape Characters & Backslashes (\) [01:06:53]A backslash tells JavaScript to interpret a special character as a literal part of the string text, stripping away its code execution mechanics [01:07:09].JavaScript// Adding quotation marks safely within double quotes
+let text = "Hello \"Babbar\" Sir"; 
+
+// Using a literal backslash inside text
+let path = "C:\\Folder\\File.js"; `[01:07:56]`
