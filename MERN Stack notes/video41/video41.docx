@@ -1,0 +1,31 @@
+Part 1: Operators in JavaScriptAn Operator is a specialized symbol used to perform specific programmatic actions or computations on values (known as operands) [00:01:26]. For example, in 2 + 3, the + is the operator and 2 and 3 are the operands [00:04:15].Operators are broadly categorized into two structural execution formats based on operand requirements:Unary Operators: Require only a single operand to execute (e.g., ++a, a--) [00:03:52].Binary Operators: Require two distinct operands to perform an action (e.g., a + b) [00:03:52].A. Arithmetic OperatorsUsed for standard mathematical calculations:OperatorActionExampleResult (given a=10, b=5) [00:07:26]+Addition [00:04:51]a + b15-Subtraction [00:04:51]a - b5*Multiplication [00:04:51]a * b50/Division [00:04:51]a / b2%Modulus (Remainder) [00:05:41]a % b0 (since $10 \div 5$ leaves a remainder of 0)**Exponentiation (Power) [00:06:05]2 ** 532 ($2^5$)Unary Increment (++) and Decrement (--) Variations [00:08:52]Pre-Increment (++a) / Pre-Decrement (--a): First Change, then Use. The value is altered immediately, then evaluation proceeds [00:09:45].Post-Increment (a++) / Post-Decrement (a--): First Use, then Change. The current state is used for the active evaluation line, and then altered in memory [00:10:47].B. Assignment Operators [00:12:50]Used to allocate values to memory scopes. Includes shorthand assignment formats that combine a math calculation with an assignment operation:Standard Assignment: let a = 5; [00:12:59]Shorthand Addition: a += 10; (Equivalent to a = a + 10;) [00:13:34]Shorthand Subtraction: a -= 2; (Equivalent to a = a - 2;) [00:13:45]Shorthand Multiplication: a *= 3; (Equivalent to a = a * 3;) [00:13:51]Shorthand Division: a /= 2; (Equivalent to a = a / 2;) [00:14:04]C. Comparison Operators [00:15:27]Used to evaluate relations between operands. Evaluation expressions always return a boolean: true or false [00:16:45].Standard evaluation signs: >, <, >=, <= [00:15:59]Key Interview Question: Loose vs. Strict Equality [00:15:51]Loose Equality (==): Checks only the core raw values. It performs implicit type conversion if the data types do not match [00:18:43].JavaScriptconsole.log(5 == "5"); // true (String "5" converted implicitly to Number 5)
+Strict Equality (===): Compares both the value and the explicit data type. No implicit conversion is allowed [00:18:25].JavaScriptconsole.log(5 === "5"); // false (Values are identical, but Number !== String)
+D. Logical Operators [00:24:36]Used to integrate multiple truth statements together into a single pipeline:Logical AND (&&): Returns true only if all contributing conditions check out as true [00:25:35]. If even one item checks out as false, the total expression fails [00:25:59].Logical OR (||): Returns true if at least one condition checks out as true [00:26:28]. It evaluates to false only if every branch is false [00:26:35].Logical NOT (!): Inverts the boolean output state (e.g., turns true to false) [00:26:49].Short-Circuited Execution [00:32:01]In a chained series of conditions, execution stops the instant the final output is guaranteed:In ||, if the first expression is true, subsequent expressions are skipped entirely [00:32:27].In &&, if the first expression evaluates to false, the script immediately drops out without executing later steps.Truthy vs Falsy Scopes [00:30:28]When evaluating non-boolean data types, JavaScript classifies variables dynamically:Falsy values include: undefined, null, 0, false, NaN, and empty strings ("") [00:30:54].Truthy values include: Absolutely any data structure not explicitly classified as Falsy [00:31:17].E. Bitwise Operators [00:33:57]Performs calculation actions directly on binary sequences (bits) [00:34:48]:Bitwise AND (&): Yields 1 only if both target bits match as 1 [00:35:57].Bitwise OR (|): Yields 1 if at least one operational bit contains 1 [00:36:30].Bitwise XOR (^): Yields 1 if the input bits are different; yields 0 if they match exactly [00:37:18].Bitwise NOT (~): Flips all system bits. Due to negative sign interpretation tracking rules (Two's Complement logic), executing ~0 yields -1 [00:39:27].Shift ComputationsLeft Shift (<<): Shifts internal bits leftward by $N$ slots, appending zeros to the right. This effectively multiplies the starting integer by $2^N$ [00:43:14].Right Shift (>>): Shifts bits rightward by $N$ slots. This divides the integer by $2^N$, discarding remainders [00:44:19].Part 2: Conditionals & Flow ControlConditional blocks manage linear flow control execution based on runtime conditions [00:45:40].A. The if-else and else-if Stack [00:46:11]JavaScriptlet number = 4;
+
+if (number === 1) {
+    console.log("A"); // Executes only if condition is true
+} else if (number === 4) {
+    console.log("D"); // Executes if previous if failed but this one passes
+} else {
+    console.log("Fallback"); // Executes if all previous statements fail
+}
+B. Nested Blocks [00:55:18]You can place conditional statement layers inside other operational blocks to perform granular checks:JavaScriptif (number === 4) {
+    if (age >= 18) {
+        console.log("Inside nested block execution."); `[00:56:44]`
+    }
+}
+C. The Ternary Operator (?:) [00:21:01]A compact alternative to simple if-else blocks that assigns values based on a single condition:$$\text{Condition } \mathbf{?} \text{ ValueIfTrue } \mathbf{:} \text{ ValueIfFalse}$$JavaScriptlet age = 25;
+let status = (age >= 18) ? "I can vote" : "I cannot vote"; `[00:23:09]`
+D. Switch Case Blocks [00:57:01]An efficient, clean alternative to long else-if chains when checking an exact value match against multiple specific options [00:55:13].JavaScriptlet num = 3;
+
+switch(num) {
+    case 1:
+        console.log("A");
+        break;
+    case 3:
+        console.log("C"); // Matches and executes here!
+        break;            // Critical: Exits the switch structure immediately [01:00:00]
+    default:
+        console.log("F"); // Runs only if no other cases match [00:58:00]
+}
+The Crucial Role of break: Without a break command at the end of a case block, execution continues into the code of subsequent cases regardless of whether they match (known as fall-through) [01:00:56].
