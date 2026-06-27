@@ -1,0 +1,30 @@
+1. The Math ObjectThe Math object is a built-in static object (not a constructor function) that provides properties and methods for mathematical constants and functions.Core Mathematical ConstantsMath.PI: Returns the value of $\pi \approx 3.14159$.Math.E: Returns Euler's constant $\approx 2.718$.Common Math MethodsMath.abs(x): Returns the absolute positive value of a number.JavaScriptconsole.log(Math.abs(-5)); // 5
+Rounding Operations:Math.round(x): Rounds to the nearest integer.Math.ceil(x): Rounds upwards to the next largest integer.Math.floor(x): Rounds downwards to the next lowest integer.Math.trunc(x): Truncates and discards fractional digits completely.JavaScriptconsole.log(Math.ceil(4.2));  // 5
+console.log(Math.floor(4.7)); // 4
+Math.min(...args) & Math.max(...args): Find the smallest or largest numbers in a list.JavaScriptconsole.log(Math.max(10, 45, 2, 99)); // 45
+Math.random(): Generates a pseudo-random floating-point number between 0 (inclusive) and 1 (exclusive).JavaScript// Generate a random integer between 1 and 10
+let randomNum = Math.floor(Math.random() * 10) + 1;
+2. The Date ObjectThe Date object handles a platform-independent instance of a single moment in time. Unlike Math, it requires instantiation using the new keyword.Creating DatesJavaScript// 1. Current system timestamp
+let now = new Date();
+
+// 2. Specific Date String format parsing
+let specificDate = new Date("2026-06-28");
+
+// 3. Components allocation format: new Date(year, monthIndex, day, hours, ...)
+// Note: Month index starts from 0 (January is 0, June is 5)
+let componentDate = new Date(2026, 5, 28, 10, 30);
+Critical Date Retrieval & Update MethodsOnce an instance is live, you can query or update its properties:JavaScriptlet dateItem = new Date();
+
+console.log(dateItem.getFullYear());  // Returns the 4-digit year (e.g., 2026)
+console.log(dateItem.getMonth());     // Returns Month Index (0-11)
+console.log(dateItem.getDate());      // Returns Day of the month (1-31)
+console.log(dateItem.getDay());       // Returns Day Index of the week (0 is Sunday)
+
+// Updating properties dynamically
+dateItem.setFullYear(2027);
+3. The String Wrapper ObjectWhile strings are primitives, JavaScript wraps them temporarily inside a standard String object whenever an in-built property or method is called. You can also explicitly declare them via the String constructor.JavaScriptlet primitiveStr = "Hello";
+let objectStr = new String("Hello");
+
+console.log(typeof primitiveStr); // "string"
+console.log(typeof objectStr);    // "object"
+Essential String Mutation & Lookup Methods.includes(substring): Returns a boolean if a sequence is found inside the string..startsWith(substring) & .endsWith(substring): Conditional prefix/suffix lookups..replace(search, replacement): Substitutes the first occurrence of a pattern..trim(): Clears empty trailing or leading whitespaces.Summary Checklist for In-Built Object PatternsMath: Completely static. Call methods straight from Math.methodName() without using new.Date: Dynamic timeline instances. Always instantiate using new Date() before mutations.String Object: Implicitly triggered on primitives by JavaScript to unlock text manipulation tools dynamically.
