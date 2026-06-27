@@ -1,0 +1,39 @@
+Here is the complete, scannable lecture note for Temporal Dead Zone & Variable Scoping in JS (Episode 46 / Lesson 8) from Love Babbar's (CodeHelp) web development bootcamp [00:00:35].Lecture Notes: Variable Scoping & Temporal Dead Zone (TDZ)Part 1: Variable Scoping in JavaScriptVariable Scoping defines the structural baseline rules dictating exactly where a specific variable context can be accessed or modified within a script profile [00:00:55].JavaScript structures variables into three distinct scope environments [00:01:03]:A. Global Scope [00:01:08]A variable is globally scoped if it is declared out in the open, outside of any explicit functions, conditional blocks, or operational loops [00:02:14]. Its direct operational parent is the entire .js file container [00:02:36].JavaScript// Globally Declared Variable
+const age = 15; `[00:02:14]`
+
+if (true) {
+    console.log(age); // Accessible here! [00:03:34]
+}
+function testScope() {
+    console.log(age); // Accessible here too! [00:04:04]
+}
+Key Characteristic: Globally declared variables (using var, let, or const) are accessible anywhere across the entire workspace pipeline [00:02:45].B. Function Scope [00:01:12]When a variable is initialized inside a function block, it is isolated strictly within those functional curly braces {} [00:07:06].JavaScriptfunction sayHello() {
+    var fullAddress = "Bhopal, MP"; `[00:07:27]`
+    console.log(fullAddress); // Works perfectly inside the function block
+}
+
+console.log(fullAddress); 
+// Output: ReferenceError: fullAddress is not defined [00:07:37]
+Key Characteristic: Functional isolation applies uniformly across all variable keywords (var, let, and const) [00:08:04]. Once execution leaves the function block, those variables are cleared from memory [00:08:15].C. Block Scope [00:01:21]A block is defined by a pair of curly braces {} inside structures like if-else conditionals or loops [00:01:24].The keyword you use dictates whether the variable remains trapped inside that block:JavaScript{
+    var normalVar = 180;  // Not block-scoped [00:08:27]
+    let strictLet = 200;  // Block-scoped [00:09:26]
+    const strictConst = 300; // Block-scoped [00:09:41]
+}
+
+console.log(normalVar);   // Outputs: 180 (var leaks out of raw blocks!) [00:09:02]
+console.log(strictLet);   // Output: ReferenceError: strictLet is not defined [00:09:41]
+var is NOT Block-Scoped: Variables declared with var inside a block leak outward and remain accessible globally [00:08:27].let and const ARE Block-Scoped: They are tightly locked inside their declaring block and cannot be leaked outside the curly braces {} [00:01:50].Part 2: The Temporal Dead Zone (TDZ) [00:10:34]The Temporal Dead Zone (TDZ) is the explicit time behavior window between a variable's structural scope entry point and the exact line step where it is initialized with a value [00:10:48].Why the TDZ HappensWhile variables declared with var hoist as undefined, variables declared with let and const are hoisted without being initialized [00:11:07]. They exist in a state of suspended access until their explicit declaration code step is compiled [00:12:55].Code BreakdownJavaScript// --- Global Scope Starts ---
+
+// 🚫 START OF MARKS' TEMPORAL DEAD ZONE (TDZ)
+console.log("Welcome to CodeHelp"); 
+console.log("Processing code lines...");
+
+// Trying to access the variable here explodes:
+// console.log(marks); // ❌ Throws ReferenceError [00:12:02]
+// 🚫 END OF MARKS' TEMPORAL DEAD ZONE (TDZ)
+
+let marks = 100; // ✨ Initialization line step clears the TDZ [00:11:26]
+
+// --- Marks is now fully accessible safely ---
+console.log(marks); // Outputs: 100 [00:11:38]
+Why does TDZ exist?It enforces clean coding standards. It acts as a safety guardrail that prevents developers from reading stale, uninitialized data fields [00:13:28].💡 Summary Variable Matrix Strategy [00:01:34]KeywordScope TypeHoisting BehaviorCan Be Re-assigned?varFunction ScopeHoists as undefinedYesletBlock Scope {}Locked inside TDZYesconstBlock Scope {}Locked inside TDZNo (Read-Only)🛠️ Production Best Practice: To ensure code behavior remains safe and highly predictable, completely deprecate the use of var [00:13:28]. Default to using const for unchanging variables and let for standard dynamic value properties [00:13:33].
