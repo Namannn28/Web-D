@@ -1,0 +1,125 @@
+Part 1: Classes & Object-Oriented JavaScript
+A Class is an extensible blueprint layout template used to define the structural properties and functional data rules of a targeted entity model before spawning active copies into system memory [00:01:49].
+
+The Blueprint Analogy: An architect drafting structural floor plans on a sketch pad is a Class [00:01:03]. Walking into the neighborhood and spending capital to physically build the house yields an Object instance [00:01:23].
+
+A. The Core Structural Components [00:02:49]
+A class acts as a consolidated data storage container wrapping two essential components:
+
+State (Properties / Data Members): Variables that hold details about the entity (e.g., age, height) [00:02:59].
+
+Behavior (Methods / Member Functions): Functional operations the entity can execute (e.g., walking(), running()) [00:03:06].
+
+B. Syntactic Blueprint Layout
+JavaScript
+class Human {
+    // 1. Properties (Public fields by default) [00:07:09]
+    age = 13;
+    height = 180;
+    
+    // 2. Private Field (Prefix with a '#' symbol) [00:07:46]
+    #weight = 80; `[00:05:07]`
+
+    // 3. The Constructor Function [00:13:22]
+    constructor(newAge, newHeight, newWeight) { `[00:13:54]`
+        this.age = newAge;       // 'this' targets the active object context [00:09:11]
+        this.height = newHeight;
+        this.#weight = newWeight;
+    }
+
+    // 4. Methods / Behavior [00:04:57]
+    walking() {
+        console.log(`I am walking. My private weight is: ${this.#weight}`); `[00:08:43]`
+    }
+}
+
+// Spawning an active Object instance using the 'new' keyword [00:05:58]
+const personObj = new Human(25, 190, 75); `[00:14:36]`
+personObj.walking(); // Invoking member methods using the '.' dot operator [00:04:05]
+C. Access Modifiers: Public vs. Private [00:07:09]
+Public Fields: Default property bindings. They are accessible anywhere inside or outside the enclosing class boundary [00:07:14].
+
+Private Fields (#): Variables prefixed with # can only be accessed within the exact class block scopes [00:07:24]. Attempting to read personObj.#weight from the outside triggers a raw SyntaxError compilation crash [00:08:10].
+
+D. Getters and Setters (get & set) [00:10:02]
+To safely inspect or modify private class states from external script locations, use Getters and Setters [00:10:45].
+
+JavaScript
+class Human {
+    #weight = 80;
+
+    // Getter Method (Fetches private records cleanly) [00:10:32]
+    get fetchWeight() {
+        return this.#weight; `[00:11:11]`
+    }
+
+    // Setter Method (Applies structural updates with validation guards) [00:10:45]
+    set modifyWeight(val) {
+        if (val > 0) this.#weight = val; // Enforces data safety rules [00:11:43]
+    }
+}
+
+const user = new Human();
+user.modifyWeight = 85;      // Executes the setter like a plain property update [00:12:04]
+console.log(user.fetchWeight); // Runs the getter. Outputs: 85 [00:15:53]
+Benefits: They provide semantic code clarity, ensure robust data protection through integrated entry validation checks, and enable strict Encapsulation packaging boundaries [00:12:57].
+
+Part 2: Default Function Parameters
+Default Parameters allow you to pre-initialize function parameters with fallback values if no arguments are passed during invocation, or if an explicit undefined tag is detected [00:16:54].
+
+A. The 7 Core Behavioral Variations
+Variation 1: Baseline Default Primitives [00:19:06]
+JavaScript
+const sayName = (myName = "Prabhu Deva") => { `[00:19:11]`
+    console.log(`My name is ${myName}`);
+};
+sayName();         // Outputs: "My name is Prabhu Deva" (Fallback applied) [00:19:19]
+sayName("Babbar"); // Outputs: "My name is Babbar" (Argument used) [00:19:24]
+Variation 2: Multi-Parameter Fallbacks [00:19:41]
+JavaScript
+const greetUser = (fName = "Uday", lName = "Singh") => { `[00:20:27]`
+    console.log(`Hello, ${fName} ${lName}`);
+};
+greetUser("Love"); // Outputs: "Hello, Love Singh" [00:20:47]
+Variation 3: Inter-Parameter Dependencies [00:20:57]
+A trailing default parameter can safely inherit, calculate, or read from previous parameters listed to its left [00:21:53].
+
+JavaScript
+const processName = (fName, lName = fName.toUpperCase()) => { `[00:21:10]`
+    console.log(`${fName} ${lName}`);
+};
+processName("Love"); // Outputs: "Love LOVE" [00:21:57]
+Variation 4: Object Reference Types [00:22:27]
+You can assign complete default object configurations inside parameter slots [00:23:43].
+
+JavaScript
+const initProfile = (value = { age: 15, weight: 90 }) => { `[00:23:43]`
+    console.log(value.age);
+};
+initProfile(); // Outputs: 15 [00:24:05]
+Variation 5: Array Reference Types [00:24:13]
+JavaScript
+const printList = (list = ["Love", "Rahul", "Kunal"]) => { `[00:24:24]`
+    console.log(list);
+};
+printList(); // Outputs: ["Love", "Rahul", "Kunal"] [00:24:37]
+Variation 6: The null vs. undefined Trap [00:24:53]
+Passing null tells the engine you are intentionally providing an empty value. JavaScript will accept this literal value and skip the default parameter fallback entirely [00:25:50].
+
+Passing undefined signals that no data is present. The engine steps in and overrides it with your configured default fallback value [00:26:01].
+
+JavaScript
+const showData = (val = "Rahul") => console.log(val); `[00:25:05]`
+
+showData(null);      // Outputs: null [00:25:23]
+showData(undefined); // Outputs: "Rahul" (Fallback triggered) [00:25:41]
+Variation 7: Functions as Default Parameters [00:26:26]
+You can use a function call statement as a default parameter fallback value. It will only execute if that specific argument is missing during invocation [00:28:19].
+
+JavaScript
+const getAgeValue = () => 190; `[00:26:41]`
+
+const printUser = (name = "Love", age = getAgeValue()) => { `[00:28:09]`
+    console.log(`${name} ${age}`);
+};
+printUser(); // Outputs: "Love 190" [00:28:23]
