@@ -1,0 +1,38 @@
+1. What is a Variable?A Variable acts as a named container or memory location storage slot used to hold data values during program execution.Declaration SyntaxIn JavaScript, a variable is managed via two main steps:Declaration: Telling the runtime engine to reserve a variable reference name.Initialization: Allocating an actual value to that reserved memory spot.JavaScriptlet age;        // Declaration
+age = 22;       // Initialization
+let score = 99; // Combined Declaration and Initialization
+2. Variable Declarations: var vs let vs constModern JavaScript (ES6+) provides three distinct keywords to manage variable behaviors. Choosing the right keyword dictates scope stability:Featurevar (Old ES5 Way)let (Modern ES6 Way)const (Modern ES6 Way)ScopeFunction-ScopedBlock-Scoped {}Block-Scoped {}Re-assignmentAllowedAllowedNot Allowed (Read-Only)RedeclarationAllowed within scopeNot AllowedNot AllowedHoistingInitialized as undefinedHoisted but in Temporal Dead ZoneHoisted but in Temporal Dead ZoneExample DemonstrationsJavaScript// 1. var can be redeclared and re-assigned anywhere
+var name = "Naman";
+var name = "Gupta"; // Valid!
+
+// 2. let prevents redeclaration errors within the same block scope
+let target = 100;
+// let target = 200; // SyntaxError: Identifier 'target' has already been declared
+target = 150;        // Re-assignment is completely fine
+
+// 3. const requires instant initialization and remains immutable
+const PI = 3.1415;
+// PI = 3.14;        // TypeError: Assignment to constant variable.
+3. Data Types in JavaScriptJavaScript is a dynamically typed language. This means you don't need to explicitly declare the data type of a variable (unlike C++ or Java). The interpreter automatically detects the type at runtime based on the assigned value.JavaScriptlet dynamicallyTyped = "Hello"; 
+dynamicallyTyped = 45; // Valid behavior in JavaScript!
+Data types are broadly categorized into Primitive and Non-Primitive (Reference) types.  A. Primitive Data Types (Stored directly in the stack memory)There are 7 primitive types in JavaScript:Number: Represents both integer and floating-point fractional values.JavaScriptlet marks = 98;
+let average = 88.5;
+String: Text sequences wrapped inside single (' '), double (" "), or backticks (` `).JavaScriptlet message = "Nameste Dunia";
+Boolean: Simple conditional logic flags containing only true or false.JavaScriptlet IsValidSlot = true;
+Undefined: Automatically assigned to a variable that has been declared but not initialized.JavaScriptlet placeholder; // value is undefined
+Null: Intentional explicit assignment representing an empty or non-existent value.JavaScriptlet accountBalance = null; 
+console.log(typeof null); // Returns "object" (A historical JS bug!)
+BigInt: Handles exceptionally large integer safe boundaries ($> 2^{53} - 1$).JavaScriptlet hugeNumber = 9007199254740991n;
+Symbol: Generates immutable, completely unique identifiers.B. Non-Primitive / Reference Data Types (Stored in heap memory via object references)Objects: Key-value collections representing structured property records.JavaScriptlet student = {
+    fullName: "Naman Gupta",
+    id: "23Bce10189",
+    isEnrolled: true
+};
+console.log(student.fullName); // Output: Naman Gupta
+Arrays: Ordered linear lists used to hold multiple items index-by-index.JavaScriptlet languages = ["C++", "Java", "Python", "JavaScript"];
+console.log(languages[0]); // Output: C++
+Functions: Reusable procedural logic blocks blocks that carry out tasks.4. The typeof OperatorTo inspect what specific type of data a variable is currently holding at any point in execution, use the typeof keyword helper:JavaScriptconsole.log(typeof "CodeHelp"); // "string"
+console.log(typeof 365);        // "number"
+console.log(typeof true);       // "boolean"
+console.log(typeof undefined);  // "undefined"
+Are you ready to dive into how operators and conditional expressions handle these variables, or would you like to explore how hoisting affects var and let first?
