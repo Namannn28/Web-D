@@ -1,0 +1,105 @@
+1. What is Hoisting? [00:00:40]
+Hoisting is a mechanism in JavaScript where variable and function declarations are conceptually moved ("hoisted") to the absolute top of their containing execution scope before the engine runs the script code [00:00:52].
+
+This behaviors means you can safely run or invoke specific functions and variables before their lines of initialization appear sequentially in the raw script code file [00:03:01].
+
+2. Function Hoisting Mechanics [00:07:24]
+How hoisting behaves depends heavily on how the function was declared:
+
+A. Plain Function Declarations (Hoisting Enabled) [00:07:24]
+When you write a standard function blueprint, the JavaScript engine hoists both the declaration handle and the entire accompanying processing code body straight to the top of the scope stack [00:05:36].
+
+JavaScript
+// Calling the function BEFORE its code block is defined works flawlessly!
+sayMyName("Babbar"); `[00:02:40]`
+
+function sayMyName(name) { `[00:02:15]`
+    console.log(name); 
+}
+B. Function Expressions & Arrow Syntax (Hoisting Disabled) [00:11:03]
+When a function is mapped straight into a variable handle, it follows standard variable scoping laws instead of function laws. The runtime code splits and fails to hoist the execution blocks [00:11:15].
+
+JavaScript
+// This will trigger an explosive compilation crash error!
+sayHello(); `[00:11:42]`
+
+const sayHello = function() { `[00:11:29]`
+    console.log("Hello ji!");
+};
+// Output: ReferenceError: Cannot access 'sayHello' before initialization [00:12:09]
+3. Variable Hoisting: var vs. let vs. const [00:04:29]
+Variables exhibit stark behavioral differences during the execution compilation phase:
+
+A. The var Keyword (Partial Hoisting) [00:04:33]
+When hoists variable identifiers mapped using var, only the initial declaration line floats to the top—the value data payload stays exactly where it was [00:05:42]. The variable is registered in scope but initialized automatically as undefined [00:05:13].
+
+JavaScript
+console.log(age); // Outputs: undefined (No crash occurs!) [00:05:13]
+var age = 25; `[00:04:42]`
+
+// --- How the browser interpreter actively reads this code under the hood: ---
+// var age;       <-- Hoisted right to the top room scope [00:05:52]
+// console.log(age); 
+// age = 25;
+B. let & const Keywords (Temporal Dead Zone) [00:08:54]
+Variables declared using let or const are hoisted conceptually, but they are not initialized with any fallback value [00:09:50]. They sit wrapped inside an inaccessible vacuum boundary called the Temporal Dead Zone (TDZ) until code processing explicitly maps past their raw line step [00:00:15].
+
+JavaScript
+console.log(score); 
+let score = 100;
+// Output: ReferenceError: Cannot access 'score' before initialization [00:09:50]
+🚫 Class Scoping Rules: Just like let and const, standard Classes are also completely locked out of hoisting operations. Invoking an instance template before its structural description block will cause an immediate ReferenceError crash [00:14:24].
+
+4. Understanding the Function Call Stack [00:14:47]
+The Call Stack is an operational engine mechanic used to chronologically track and organize nested functional execution layers across an active script environment [00:17:16].
+
+Stack Blueprint Logic: LIFO [00:15:22]
+The stack tracks operations using a Last-In, First-Out (LIFO) data flow structure, similar to a vertical pile of dinner plates inside a wedding hall [00:15:34]:
+
+The absolute final function added to the running stack queue is always the first block processed and discarded [00:16:42].
+
+Live Execution Trace Framework [00:17:41]
+Consider a nested sequence where function A runs function B, which runs function C:
+
+JavaScript
+function C() { console.log("In C"); }
+function B() { C(); }
+function A() { B(); }
+A(); // Invocation trigger point
+When A() triggers, its frame is pushed onto the stack [00:18:57].
+
+Inside A, function B() is fired, pushing B's frame right on top of A [00:19:07].
+
+Inside B, function C() fires, stacking C right on top of B [00:19:21].
+
+Once C() completely executes its operations, its layer is popped off and discarded from the active memory stack [00:20:00].
+
+Control steps back down directly into B, which finishes and pops off [00:20:15].
+
+Finally, A resolves and drops out entirely, leaving the operational call stack clean and empty [00:20:42].
+
+5. Why are Functions "First-Class Citizens" in JS? [00:21:18]
+In JavaScript, functions are treated with the exact same flexibility as any raw data primitive [00:22:41]. They earn the title of First-Class Citizens due to five core structural programming capabilities:
+
+1. Mapping to Variables: You can assign full operational function properties directly inside variables [00:21:40].
+
+2. Passing as Arguments: You can pass an entire function block as an operational argument inside another function call wrapper [00:21:47].
+
+3. Returning from Functions: A function block can process internal computations and output a completely separate function layer as its final returning statement data [00:21:52].
+
+4. Storing inside Data Structures: You can pack multi-functional processing routines sequentially into a linear Array list container [00:22:03].
+
+5. Object Key Property Allocation: You can inject execution scripts straight into standard object key-value records to serve as local methods [00:22:15].
+
+Code Showcase: Functions as First-Class Citizens
+JavaScript
+// A. Storing Functions cleanly inside a sequential Array list container [00:27:23]
+const operationStack = [
+    (a, b) => a + b, // Index 0: Addition [00:27:36]
+    (a, b) => a - b, // Index 1: Subtraction [00:27:49]
+    (a, b) => a * b  // Index 2: Multiplication [00:27:55]
+];
+
+// B. Invoking an array-nested function address directly [00:28:17]
+let mathResult = operationStack[2](5, 10); // Grabs Index 2, runs calculation [00:29:08]
+console.log(mathResult); // Outputs: 50 [00:29:13]
