@@ -1,0 +1,31 @@
+Lecture Notes: Error Handling in JavaScriptAn Error is an unexpected event or disruption that occurs during program compilation or runtime execution, causing the normal script execution pipeline to break down and crash. Effective Error Handling ensures our code falls back gracefully instead of terminating unexpectedly.Errors are broadly classified into two execution runtime categories:Compile-Time Errors: Syntax mistakes caught by the engine parsing logic before the code runs (e.g., missing brackets).Runtime Errors (Exceptions): Issues that occur during live execution (e.g., referencing a variable that does not exist, network failures).1. The Core Error Handling Blocks (try-catch)The fundamental structure for isolating and catching runtime exceptions without crashing the program uses the try and catch blocks.JavaScripttry {
+    // 1. Code block where a runtime error could potentially happen
+    let x = 10;
+    console.log(y); // Throws a ReferenceError because 'y' is undefined
+} catch (error) {
+    // 2. Fallback block that executes immediately if an error drops out of the try block
+    console.log("An error was safely intercepted!");
+    console.log(`Error Message: ${error.message}`);
+}
+The Mechanics: If any line inside the try block encounters an exception, script execution immediately drops out of the try scope and jumps straight down into the catch block. Lines in the try block that sit below the broken expression are skipped completely.The error Object Parameter: The catch clause receives an implicit object payload detailing the crash. It includes properties like:.name: The explicit classification of the error (e.g., ReferenceError, TypeError)..message: The human-readable descriptive string detailing the crash context.2. The finally ClauseThe finally block executes guaranteed, every single time, regardless of whether the try code finishes cleanly or triggers a catch fallback block.JavaScripttry {
+    console.log("Processing server operations...");
+} catch (err) {
+    console.log("Error handled safely.");
+} finally {
+    // This runs no matter what! Perfect for system resource cleanup loops.
+    console.log("Closing active database/network connections cleanly.");
+}
+Production Use Case: Use finally to handle cleanup operations, like closing database connections, ending stream writers, or stopping visual loading spinners on a UI page.3. Custom Error Dispatch: The throw KeywordYou can intentionally trigger your own custom error states using the throw keyword. This lets you enforce domain-specific validation constraints during program execution.JavaScriptconst verifyAge = (age) => {
+    if (age < 18) {
+        // Enforce strict business logic errors using custom strings or standard objects
+        throw new Error("Access Denied: You must be at least 18 years old.");
+    }
+    return "Access Granted.";
+};
+
+try {
+    verifyAge(15); // Explicitly triggers the error branch
+} catch (error) {
+    console.error(`Caught custom dispatch: [${error.name}] -> ${error.message}`);
+}
+4. Common Native JavaScript Error ObjectsError ClassRoot CauseCode Trigger SampleReferenceErrorAttempting to access an uninitialized or undeclared variable.console.log(nonExistentVar);TypeErrorUsing a value in a way that is incompatible with its data type.let num = 45; num.toUpperCase();SyntaxErrorViolating the structural language rule syntax of JavaScript.let form = ; // Unexpected delimiterRangeErrorPassing a numeric argument that falls outside an allowed range limit.let arr = new Array(-5); // Invalid size💡 Production Best PracticesAvoid Silent Catching: Never leave a catch(err) {} block completely empty. Suppressing exceptions blindly makes tracking down root infrastructure bugs incredibly difficult.Keep try Blocks Focused: Only wrap lines of code inside a try block that have a high probability of generating operational runtime errors (like network fetches or string parsing tasks).
