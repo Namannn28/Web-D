@@ -1,0 +1,80 @@
+Part 1: Object Cloning in JavaScript
+As you know, copying a reference variable (like an object or array) directly using the assignment operator (=) only copies its stack pointer address, not the actual data payload in the heap. This creates a shared reference, known as a shallow copy.
+
+To create an independent copy of an object, you must perform Object Cloning.
+
+There are three common native ways to clone objects in JavaScript:
+
+Method 1: Using the Spread Operator (...)
+The spread operator "unpacks" the key-value properties of an existing object literal directly into a newly opened object container {}.
+
+JavaScript
+let original = {
+    age: 25,
+    weight: 80
+};
+
+// Cloning via spread operator
+let clonedObj = { ...original };
+
+clonedObj.age = 30; 
+console.log(original.age); // 25 (The original remains safe and untouched!)
+Method 2: Using Object.assign()
+This built-in static method copies all enumerable own properties from one or more source objects to a target destination object.
+
+JavaScript
+let original = {
+    name: "Naman",
+    status: "active"
+};
+
+// Syntax: Object.assign(target, source)
+let clonedObj = Object.assign({}, original);
+Method 3: Iteration via a for-in Loop
+A manual, traditional strategy where you cycle index-by-index through the source keys and assign them to a new empty object.
+
+JavaScript
+let original = { height: 180, marks: 99 };
+let clonedObj = {};
+
+for (let key in original) {
+    clonedObj[key] = original[key];
+}
+⚠️ The Shallow Trap Warning: All three methods listed above only clone the top-level properties. If your object contains nested objects or internal arrays, those deeper values are still copied by pointer reference. To clone multi-layered nested layouts perfectly, use deep cloning mechanics like structuredClone(original).
+
+Part 2: The JavaScript Garbage Collector (GC)
+In lower-level languages like C++ or C, developers must manually allocate and free up memory spaces. JavaScript manages this lifecycle automatically through its built-in engine runtime mechanism: The Garbage Collector.
+
+A. Core Memory Lifecycle
+The engine processes memory via a three-tier pipeline automatically:
+
+Allocation: Reserves space in the Heap or Stack dynamically upon variable generation.
+
+Utilization: The application reads or writes to that memory slot during runtime execution.
+
+Release: Once the allocated data is no longer needed, it is cleared out.
+
+B. Mark-and-Sweep Algorithm
+Modern JavaScript engines (like V8) use the Mark-and-Sweep algorithm to track memory cleanup:
+
+Roots Selection: The collector builds a master tree tracking live execution coordinates, starting with the root execution context (like the global window or global object).
+
+Marking Phase: The collector walks down all active reference branches. Any object that can be actively reached from the root nodes gets flagged as active/reachable.
+
+Sweeping Phase: The algorithm scans the unflagged sectors of the heap warehouse. Any object that could not be reached from the root branches is disconnected, swept, and destroyed, releasing its memory space back to the system.
+
+An Unreachable Memory Code Example
+JavaScript
+let user = { name: "Rahul", age: 24 }; // Allocated in Heap via 'user' root reference
+
+user = null; 
+// The object { name: "Rahul", age: 24 } is now totally orphaned in the Heap warehouse.
+// Because it has no active reference paths extending down from any root scopes, 
+// the Garbage Collector will safely destroy it during its next sweep pass.
+C. Developer Constraints over GC
+No Manual Control: You cannot forcefully trigger or stop garbage collection executions inside standard JavaScript code workflows. The browser or Node.js runtime environment controls collection sweeps autonomously based on memory thresholds.
+
+Summary Variable Design Strategy
+Spread (...) & Object.assign(): Excellent native tools for creating clean, independent, flat structural clones.
+
+Garbage Collector: Runs silently in the background, cleaning up unreachable objects to prevent application memory leaks.
