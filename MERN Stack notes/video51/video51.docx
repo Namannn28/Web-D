@@ -89,3 +89,43 @@ temporaryBanner.remove();
 Minimize Reflows: Avoid appending elements inside a loop one by one using .appendChild(). This forces the browser to re-render the layout repeatedly. Instead, stack elements into a temporary virtual placeholder container called a DocumentFragment, and append that fragment to the live DOM tree in a single operation.
 
 Prefer classList Over Inline Styles: Instead of writing detailed inline layout strings like element.style.color = 'red', create a dedicated .error-text utility class in your CSS file and simply append it using element.classList.add('error-text').
+
+When a user interacts with a webpage—whether by clicking a button, typing inside an input box, or scrolling down a page—the browser generates an Event. JavaScript can listen for these events and execute a specific block of code (a callback function) in response.1. What is an Event Listener?An event listener is an engine mechanic attached to a DOM element that waits patiently for a specific user action to occur.The Old Way (Inline/Property Event Handlers)JavaScriptlet btn = document.querySelector('.btn');
+btn.onclick = function() {
+    console.log("Clicked!");
+};
+The Problem: You can only assign one function to an event property at a time. If you write another btn.onclick lower down, it overrides the first one completely.The Modern Way: addEventListener()This method allows you to attach multiple operations to a single event on an element safely.$$\mathbf{\text{element.addEventListener('eventType', callbackFunction)}}$$JavaScriptlet btn = document.querySelector('.btn');
+
+const alertUser = () => console.log("Button Hovered!");
+const logData = () => console.log("Tracking analytics...");
+
+// Attaching multiple operations to the same event pipeline safely
+btn.addEventListener('mouseenter', alertUser);
+btn.addEventListener('mouseenter', logData);
+2. Common Event TypesCategoryEvent NameCore Trigger MechanicMouse'click'Fires when an element is clicked.'dblclick'Fires when an element is double-clicked.'mouseenter'Fires when the mouse pointer moves onto an element.Keyboard'keydown'Fires the instant a key on the keyboard is pressed down.'keyup'Fires when a pressed key is released.Form'submit'Fires when a form is submitted (attached to the <form> element).'change'Fires when the value of an input element changes (e.g., dropdown select).3. The Event Object (e)When an event fires, the browser automatically passes an Event Object as an argument into your callback function. This object holds valuable data footprints about the interaction:JavaScriptlet inputField = document.querySelector('#username');
+
+inputField.addEventListener('keydown', (e) => {
+    console.log(`Key pressed: ${e.key}`);  // The literal character typed (e.g., "A")
+    console.log(`Key code: ${e.code}`);    // The physical key coordinate (e.g., "KeyA")
+});
+Stopping Default Behaviors: e.preventDefault()Some elements have built-in default browser behaviors. For example, clicking a link automatically navigates to a URL, and submitting a form automatically refreshes the entire page. You can intercept and block this using e.preventDefault():JavaScriptlet form = document.querySelector('#signup-form');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); // 🛑 Stops the page from reloading!
+    console.log("Form data harvested via AJAX instead.");
+});
+4. Event Lifecycle: Bubbling vs. CapturingWhen an event triggers on an element nested deep inside other elements, it travels through the DOM tree. This travel lifecycle happens in two phase architectures:A. Event Bubbling (Default)The event triggers first on the target element that was explicitly clicked, and then bubbles upward through its parent ancestors like an air bubble in water.JavaScript// If you click a button inside a <div>, the button's click fires first, then the <div>'s click
+btn.addEventListener('click', () => console.log("Button Clicked")); 
+Stopping Propagation: If you want an event to fire only on the child and not trigger its parent containers, call e.stopPropagation():JavaScriptbtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // 🛑 Stops the event bubble from rising upward
+    console.log("Only the button fires.");
+});
+B. Event CapturingThe exact inverse of bubbling. The event trickles downward from the highest global window layer down to the target element. To listen to an event during the capturing phase instead of bubbling, pass an optional third parameter { capture: true } inside your listener setup.5. Performance Optimization: Event DelegationIf you have an un-ordered list (<ul>) containing 1,000 list items (<li>), attaching an individual .addEventListener() to every single list item creates massive performance lag and wastes system memory.Instead, leverage Event Bubbling using Event Delegation. Attach one single listener to the parent <ul>, and let clicks bubble up to it.JavaScriptlet parentList = document.querySelector('#global-list');
+
+parentList.addEventListener('click', (e) => {
+    // Check if the actual clicked item target is an <li> element
+    if (e.target.tagName === 'LI') {
+        console.log(`Item contents: ${e.target.textContent}`);
+    }
+});
+💡 Production Best PracticesClean Up Memory Loops: If you are building single-page applications (SPAs) where components mount and unmount dynamically, always remove event listeners using element.removeEventListener('type', functionName) when destroying elements to prevent application memory leaks.Avoid Inline Scripts: Keep your HTML markup clean. Never map execution code straight into markup templates like <button onclick="alert('run')">. Isolate all interaction pipelines inside your script layers.
