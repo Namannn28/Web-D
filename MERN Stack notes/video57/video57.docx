@@ -1,0 +1,49 @@
+Lecture Notes: Async-Await & Fetch APIIn modern full-stack web applications, communicating with external servers asynchronously (without locking or freezing the main UI browser thread) is critical. While native Promises solved callback hell, Async/Await (introduced in ES8) provides an elegant syntactic wrapper over Promises, making asynchronous code look and read like synchronous step-by-step code.1. Async and Await MechanicsTo build an asynchronous function handler pipeline, JavaScript provides two primary keywords that work in tandem:A. The async KeywordPlacing the function modifier keyword async before a function declaration changes its execution profile.The Rule: An async function always returns a Promise. If you return a raw value (like a string or number) inside an arrow function mapped with async, JavaScript automatically wraps that value inside a resolved Promise wrapper container.JavaScriptconst getSystemStatus = async () => {
+    return "Online"; 
+};
+console.log(getAgeValue()); // Outputs: Promise { <fulfilled>: "Online" }
+B. The await KeywordThe await keyword can only be executed inside an active async function scope block.The Mechanics: It freezes code execution line-by-line, waiting for the targeted Promise to resolve or reject before stepping down to the next instruction block. This completely eliminates the need for deeply nested .then() chains.JavaScriptconst fetchServerMeta = async () => {
+    // Execution stops at this line until the background value resolves
+    let dataPayload = await getDatabaseRecord(); 
+    console.log(dataProfile); 
+};
+2. Network Integration: The fetch() APIThe global fetch() method starts the process of retrieving a resource from the network. It outputs a Promise that resolves into a Response object representing the server's reply.A. Performing a Standard GET RequestWhen retrieving data assets from an external REST API endpoint, the operation requires a two-step deserialization process:JavaScriptasync function getWeatherData() {
+    try {
+        // Step 1: Fire the network request block (Returns a Response stream handle)
+        let response = await fetch("https://api.example.com/weather/today");
+        
+        // Step 2: Extract the raw body payload and parse it cleanly into a JSON object
+        let data = await response.json(); 
+        
+        console.log(listData);
+    } catch (error) {
+        console.error(`Network pipeline failed: ${error.message}`);
+    }
+}
+Why two await steps? The first .fetch() resolves the instant server headers hit the client browser. You must invoke the secondary .json() method to fully download and unpack the remaining body payload streams cleanly.B. Sending Data: POST RequestsTo transmit data streams down to an active database infrastructure, pass an options configuration configuration object as the second argument:JavaScriptconst submitUserPayload = async (userRecord) => {
+    try {
+        const response = await fetch("https://api.example.com/users", {
+            method: "POST", // Explicitly state the CRUD operation context
+            headers: {
+                "Content-Type": "application/json" // Defines the incoming data layout format
+            },
+            body: JSON.stringify(userProfile) // Formats reference objects into a string stream
+        });
+        
+        let completionReceipt = await response.json();
+        return completionResult;
+    } catch (err) {
+        console.error("Failed to commit user record.");
+    }
+};
+3. Advanced Error Handling inside Async FlowBecause async routines run outside the standard synchronous call stack engine pipeline, traditional fallback traps fail to catch their errors. You must encapsulate async pipelines inside strict try-catch structures.JavaScriptconst syncExternalData = async () => {
+    try {
+        let response = await fetch("https://api.invalid-domain.xyz/v1/data");
+        let securePayload = await response.json();
+        console.log(securePayload);
+    } catch (error) {
+        // Intercepts network disconnections, invalid JSON schemas, or broken code channels
+        console.warn(`[Network Intercept] Operation failed gracefully: ${error.message}`);
+    }
+};
+4. Summary Execution Matrix StrategyMechanics FormatSyntax Pattern LayoutReadability LevelError Handling StrategyPromises.then().catch() chainsModerate (Can degrade into deep nesting).catch(err => ...) blocksAsync / Awaittry-catch sequential layoutsExcellent (Reads like synchronous code)Standard try {} catch (err) {}🛠️ Production Rule: Always pair your asynchronous await instructions with a dedicated try-catch block wrapper. Leaving a network fetch un-guarded can cause unhandled promise rejection errors that can destabilize client browser processes.
