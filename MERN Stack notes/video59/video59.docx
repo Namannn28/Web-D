@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-5. Summary Key Learning Takeaways
+5.  Summary Key Learning Takeaways
 Input Validation & Guard Clauses: Implement strict data checking on inputs before firing network request pipelines to save browser resources.
 
 Inline CSS Variables Override: Directly using standard inline styles to override specific CSS constants (conic-gradient calculations) enables deep data visualization effects without needing external graphing libraries.
